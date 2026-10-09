@@ -1,0 +1,125 @@
+﻿
+@model FeedbackManagement.Models.Feedback
+
+@{
+    ViewBag.Title = "Feedback Management";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #eaf2ff, #f3e8ff);
+        font-family: Arial, sans-serif;
+    }
+
+    .feedback-page {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+    }
+
+    .hero {
+        text-align: center;
+        padding: 30px 10px;
+        color: #243b75;
+    }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #61759c;
+        }
+
+    .feedback-card {
+        background: white;
+        padding: 35px;
+        border-radius: 22px;
+        box-shadow: 0 12px 35px rgba(60, 90, 160, 0.15);
+    }
+
+        .feedback-card h2 {
+            color: #263c76;
+            margin-bottom: 10px;
+        }
+
+    .form-control {
+        border: 1px solid #cbd8f4;
+        border-radius: 10px;
+        padding: 12px;
+        height: auto;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+    }
+
+    .form-group {
+        margin-bottom: 22px;
+    }
+
+    .btn-submit {
+        background: linear-gradient(90deg, #7c3aed, #477cf5);
+        color: white;
+        border: none;
+        padding: 13px 25px;
+        border-radius: 10px;
+        font-weight: bold;
+    }
+
+        .btn-submit:hover {
+            color: white;
+            opacity: 0.9;
+        }
+
+    .tagline {
+        background: #e8f7fb;
+        padding: 22px;
+        border-radius: 15px;
+        color: #31577b;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .text-danger {
+        display: block;
+        margin-top: 5px;
+    }
+</style>
+
+<div class="feedback-page">
+    <div class="hero">
+        <h1>Your Feedback Matters ♡</h1>
+        <p>
+            Help us improve! Share your thoughts,
+            suggestions and experience with us.
+        </p>
+    </div>
+
+    <div class="feedback-card">
+        <div class="tagline">
+            <h2>💬 Feedback Form</h2>
+            <p>Good feedback creates better experiences!</p>
+        </div>
+
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Message"]
+            </div>
+        }
+
+        @Html.Partial("_FeedbackForm", Model)
+    </div>
+
+    <p style="text-align:center; color:#61759c; margin-top:25px;">
+        ♡ Thank you for helping us grow!
+    </p>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
